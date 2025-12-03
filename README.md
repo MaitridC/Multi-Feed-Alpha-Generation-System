@@ -437,7 +437,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-- GitHub Issues: For new requests
+- GitHub Issues: Please raise pull requests
 - LinkedIn: [Maitri Dodiya](https://www.linkedin.com/in/maitri-dodiya-a054012a4/)
 
 ---
