@@ -341,7 +341,7 @@ double hurstExponent(const std::vector<double>& prices, size_t maxLag) {
     if (logLags.size() < 3) return 0.5;
 
     // Linear regression: log(R/S) = H * log(n) + c
-    double numLags = static_cast<double>(logLags.size());  // ✅ RENAMED from 'n' to 'numLags'
+    double numLags = static_cast<double>(logLags.size());  
     double sumX = std::accumulate(logLags.begin(), logLags.end(), 0.0);
     double sumY = std::accumulate(logRS.begin(), logRS.end(), 0.0);
     double sumXY = 0.0, sumX2 = 0.0;
@@ -351,7 +351,7 @@ double hurstExponent(const std::vector<double>& prices, size_t maxLag) {
         sumX2 += logLags[i] * logLags[i];
     }
 
-    double H = (numLags * sumXY - sumX * sumY) / (numLags * sumX2 - sumX * sumX);  // ✅ Use numLags
+    double H = (numLags * sumXY - sumX * sumY) / (numLags * sumX2 - sumX * sumX);  
 
     // Clamp to [0, 1]
     return std::min(std::max(H, 0.0), 1.0);
