@@ -116,7 +116,7 @@ public:
 
         if (org && bucket && token && url) {
             influx_ = std::make_shared<InfluxWriter>(org, bucket, token, url);
-            std::cout << "✅ InfluxDB writer attached for the engine\n";
+            std::cout << "InfluxDB writer attached for the engine\n";
         }
     }
 
@@ -141,10 +141,10 @@ public:
         vwap_.onTick(tick);
         auto vwapMetrics = vwap_.getMetrics();
 
-        // 6. ✅ BOLLINGER BANDS
+        // 6. BOLLINGER BANDS
         auto bollingerSignal = bollinger_.onPrice(tick.price);
 
-        // ✅ InfluxDB writes
+        // InfluxDB writes
         if (influx_) {
             // Alpha / Bollinger summary
             influx_->writeAlphaSignal(
@@ -193,10 +193,6 @@ public:
         // Only print every 3rd tick to avoid spam
         if (tickCount_ % 3 != 0) return;
 
-        // ===========================================
-        //     DISPLAY COMPREHENSIVE ALPHA REPORT
-        // ===========================================
-
         if (basicSignal && flowSignal) {
             std::cout << "\n╔══════════════════════════════════════════════════════════╗" << std::endl;
             std::cout << "║     ALPHA SIGNAL: " << std::setw(10) << tick.symbol
@@ -240,7 +236,7 @@ public:
                 std::cout << "║ VPIN (Toxicity): "
                           << std::setw(8) << std::fixed << std::setprecision(4)
                           << vpinMetrics.vpin
-                          << (vpinMetrics.toxicity > 0.5 ? "   TOXIC!" : " ✅")
+                          << (vpinMetrics.toxicity > 0.5 ? "   TOXIC!" : ")
                           << std::setw(15) << "║" << std::endl;
 
                 std::cout << "║ Price Impact:    "
@@ -355,7 +351,7 @@ void runEnhancedLiveTrading() {
         polygonFeed.start();
     });
 
-    std::cout << "✅ All systems operational\n" << std::endl;
+    std::cout << " All systems operational\n" << std::endl;
     polygonThread.join();
 }
 
