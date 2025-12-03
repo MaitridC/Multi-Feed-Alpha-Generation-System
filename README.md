@@ -5,7 +5,7 @@
 
 A high-performance real-time quantitative trading signal engine that processes tick-level market data from multiple exchanges. The system computes advanced market microstructure and regime-aware trading signals with sub-millisecond latency.
 
-[**Live Production Dashboard**](http://3.19.240.230:3000/d/alpha-live/real-time-alpha-engine)
+[**Live Production Dashboard**](http://localhost:3000/goto/df60ocnlfu9s0a?orgId=1)
 
 Deployed on AWS EC2 with continuous monitoring and 99.9% uptime.
 
