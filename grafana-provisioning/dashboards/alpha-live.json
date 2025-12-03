@@ -1,0 +1,78 @@
+{
+  "id": null,
+  "uid": "alpha-live",
+  "title": "Real-Time Alpha Engine",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": true,
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "templating": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Price Ticks",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "grafana-auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket:\"market_data\") |> range(start: -5m) |> filter(fn: (r) => r._measurement == \"ticks\" and r._field == \"price\")"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "VWAP",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "grafana-auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket:\"market_data\") |> range(start: -30m) |> filter(fn: (r) => r._measurement == \"vwap\" and r._field == \"vwap\")"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Momentum",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "grafana-auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket:\"market_data\") |> range(start: -30m) |> filter(fn: (r) => r._measurement == \"alpha_signal\" and r._field == \"momentum\")"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Order Flow OFI",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "grafana-auto"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket:\"market_data\") |> range(start: -30m) |> filter(fn: (r) => r._measurement == \"orderflow\" and r._field == \"ofi\")"
+        }
+      ]
+    }
+  ]
+}
